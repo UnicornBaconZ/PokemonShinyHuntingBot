@@ -19,3 +19,6 @@ https://github.com/40Cakes/pokebot-bizhawk/blob/main/pokebot.lua
 
 ### Oak challenge guide
 https://docs.google.com/document/d/1rYii00OuCG3Ys0toeu7y7Gugic0EniQzK03zFXzN5fM/edit#heading=h.qajcjb6xn6n7
+
+### Lua functions
+https://tasvideos.org/Bizhawk/LuaFunctions
