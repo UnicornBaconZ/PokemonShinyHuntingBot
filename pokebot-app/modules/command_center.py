@@ -14,7 +14,6 @@ COMMANDS = {
 }
 
 def wait_for_command():
-    print('Hier')
     command = input().strip().lower()
     return command
 
