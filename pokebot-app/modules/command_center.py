@@ -3,26 +3,25 @@
 ## Imports
 #############################################################################
 
-import commands
+from cprint import *
+
+from core.configs import settings
 
 #############################################################################
 ## Module - Command Center
 #############################################################################
 
-COMMANDS = {
-    'terminate': commands.terminate
-}
-
 def wait_for_command():
+    cprint.ok('\nEnter a command:')
     command = input().strip().lower()
     return command
 
 def try_execute_command(command):
     if command_exists(command):
-        pass
+        settings.COMMANDS[command]()
     else:
-        print(f'The command "{command}" does not exist')
+        cprint.err(f'\nThe command "{command}" does not exist')
 
 def command_exists(command):
-    return command in COMMANDS.keys()
+    return command in settings.COMMANDS.keys()
 

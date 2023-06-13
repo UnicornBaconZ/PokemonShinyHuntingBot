@@ -1,4 +1,10 @@
 -----------------------------------------------------------------------------
+-- Imports and dependencies
+-----------------------------------------------------------------------------
+
+local json = require('json')
+
+-----------------------------------------------------------------------------
 -- Module declaration
 -----------------------------------------------------------------------------
 
@@ -33,18 +39,20 @@ local ALLOWED_INPUT = {
 -----------------------------------------------------------------------------
 
 function controls.read_controls_file(filename)
-    console.log('Reading...')
-    local is_successfull, result = pcall(comm.mmfRead, filename, 4096)
+    local is_success_read, result_read = pcall(comm.mmfRead, filename, 4096)
 
-    console.log(is_successfull)
-    console.log(result)
-
-    if not is_successfull then
+    if not is_success_read then
         gui.addmessage('Failed reading the input file')
         return
     end
 
-    return result
+    local is_succes_convert, result_convert = pcall(json.decode, result_read)
+
+    if is_succes_convert then
+        return result_convert
+    end
+
+    return { B = false }
 end
 
 function controls.read_controls()
@@ -55,7 +63,7 @@ function controls.write_controls(input)
     if controls_private.is_valid_input(input) then
         joypad.set(input)
     else
-        --gui.addmessage('Invalid input passed to the emulator')
+        gui.addmessage('Invalid input passed to the emulator')
     end
 end
 
