@@ -29,11 +29,11 @@ def read_from_memory_mapped_file(filename, size):
             time.sleep(10)
 
 def start_reading_files():
-    for file in settings.MEMORY_MAPPED_FILES:
+    for file in settings.MemoryMappedFiles:
         thread = Thread(
-            name=file['name'],
+            name=file.value.name,
             target=read_from_memory_mapped_file,
-            args=(file['name'], file['size'],),
+            args=(file.value.name, file.value.size,),
             daemon=True
         )
 

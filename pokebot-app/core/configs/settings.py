@@ -4,10 +4,7 @@
 
 from enum import Enum
 
-from core.models import MemoryMappedFile
-
-from modules import commands
-from modules import hunting
+from classes.memory_mapped_file import MemoryMappedFile
 
 #############################################################################
 ## Module - Settings
@@ -24,20 +21,6 @@ class MemoryMappedFiles(Enum):
     OPPONENT = MemoryMappedFile('opponent_info', 4096)
     INPUT = MemoryMappedFile('input_info', 4096)
     PARTY = MemoryMappedFile('party_info', 8192)
-
-#############################################################################
-## Terminal
-#############################################################################
-
-COMMANDS = {
-    'help': commands.help,
-    'terminate': commands.terminate,
-    'hunt': commands.hunt
-}
-
-HUNTING_MODES = {
-    'starter': hunting.starter
-}
 
 #############################################################################
 ## Game

@@ -3,22 +3,21 @@
 ## Imports
 #############################################################################
 
+from time import sleep
+
 from cprint import *
 
-from core.configs import settings
-
-from modules import control_center
 
 #############################################################################
-## Module - Hunting
+## Module - Modes
 #############################################################################
+
+def idle(control_center):
+    control_center.release_all_buttons()
 
 # A first implementation of the shiny starter grinding
-def starter():
+def starter(control_center):
 
-    # NOT A WHILE TRUE, BLOCKS MAIN THREAD
-
-    # Loop
     # - Dialog
     # - Select starter
     # - Dialog
@@ -29,4 +28,17 @@ def starter():
     # Save game
     # Break
 
-    pass
+    print('Starter')
+    sleep(1)
+
+def route_201(control_center):
+    print('Route 201')
+    sleep(1)
+
+def route_202(control_center):
+    print('Route 202')
+    sleep(1)
+
+def gym_1(control_center):
+    print('Gym 1')
+    sleep(1)
